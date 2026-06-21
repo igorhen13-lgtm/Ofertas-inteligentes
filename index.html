@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Economize tempo e dinheiro! Confira nossa seleção dos melhores produtos custo-benefício com ofertas exclusivas e links diretos.">
+    <title>Ofertas Inteligentes - Seu Guia de Compras</title>
+    <style>
+        /* Configurações Globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: #3483fa;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #fff159;
+            color: #333;
+            text-align: center;
+            padding: 2.5rem 1rem;
+        }
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Menu de Navegação */
+        nav {
+            background-color: #2d3238;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        nav a {
+            color: #fff;
+            padding: 1rem 1.5rem;
+            display: block;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        nav a:hover, nav a.active {
+            background-color: #474f57;
+            color: #fff159;
+        }
+
+        /* Estilo da Barra de Pesquisa Visual */
+        .busca-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        .busca-container h3 {
+            margin-bottom: 1rem;
+            color: #222;
+            font-size: 1.3rem;
+        }
+        .busca-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .busca-input {
+            flex-grow: 1;
+            padding: 0.8rem 1rem;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .busca-input:focus {
+            border-color: #3483fa;
+        }
+        .busca-btn {
+            background-color: #3483fa;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .busca-btn:hover {
+            background-color: #2968c8;
+        }
+
+        /* Conteúdo Principal */
+        main {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        main h2 {
+            margin-bottom: 1.5rem;
+            color: #222;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Grid de Artigos */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        article {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        article h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #111;
+        }
+        article p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Lista de Links de Afiliados com Imagem e Animação */
+        .links-afiliados {
+            list-style: none;
+            margin-top: auto;
+        }
+        .links-afiliados li {
+            margin-bottom: 1rem;
+        }
+        .links-afiliados a {
+            display: flex;
+            align-items: center;
+            background: #f0f4f9;
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid #e1e8ed;
+            font-weight: 500;
+            color: #333;
+            transition: all 0.25s ease-in-out;
+        }
+        .links-afiliados a:hover {
+            background: #3483fa;
+            color: #fff;
+            border-color: #2968c8;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(52, 131, 250, 0.3);
+        }
+        
+        /* Estilização das Imagens do Produto */
+        .img-produto {
+            width: 55px;
+            height: 55px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-right: 1rem;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+        .txt-produto {
+            flex-grow: 1;
+        }
+        .seta {
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+            transition: transform 0.25s ease;
+        }
+        .links-afiliados a:hover .seta {
+            transform: translateX(5px);
+        }
+
+        /* Botão Voltar ao Topo Flutuante */
+        .btn-topo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #2d3238;
+            color: #fff159;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 2000;
+        }
+        .btn-topo:hover {
+            background-color: #3483fa;
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #2d3238;
+            color: #aaa;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+        footer p a {
+            color: #aaa;
+            text-decoration: underline;
+            margin-left: 10px;
+        }
+        footer p a:hover {
+            color: #fff159;
+        }
+
+        @media (max-width: 480px) {
+            .busca-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="topo"></div>
+
+    <header>
+        <h1>Ofertas Inteligentes</h1>
+        <p>As melhores dicas de produtos com links do Mercado Livre Afiliados</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Início</a></li>
+            <li><a href="tecnologia.html">Tecnologia</a></li>
+            <li><a href="casa.html">Casa & Cozinha</a></li>
+            <li><a href="esportes.html">Esportes</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Barra de Pesquisa Visual Integrada -->
+        <div class="busca-container">
+            <h3>O que você está procurando hoje?</h3>
+            <form action="https://mercadolivre.com.br" method="get" target="_blank" class="busca-form">
+                <input type="text" name="as_word" placeholder="Digite o produto (ex: fone bluetooth, panela)..." required class="busca-input">
+                <button type="submit" class="busca-btn">Buscar Ofertas</button>
+            </form>
+        </div>
+
+        <h2>Últimas Recomendações</h2>
+        
+        <div class="grid-container">
+            
+            <article>
+                <h3>Top 5 Fones de Ouvido Baratos</h3>
+                <p>Selecionamos os melhores fones custo-benefício para 2026. Confira:</p>
+                <ul class="links-afiliados">
+                    <li>
+                        <a href="https://mercadolivre.com.br" target="_blank" rel="noopener noreferrer">
+                            <img src="https://unsplash.com" alt="Fone JBL" class="img-produto">
+                            <span class="txt-produto">Fone JBL Wave Buds TWS</span>
+                            <span class="seta">→</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://mercadolivre.com.br" target="_blank" rel="noopener noreferrer">
+                            <img src="https://unsplash.com" alt="Fone Anker" class="img-produto">
+                            <span class="txt-produto">Fone Anker Soundcore P20i</span>
+                            <span class="seta">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>Melhores Panelas Antiaderentes</h3>
+                <p>Quer cozinhar rápido e sem grudar? Veja nossas escolhas para sua cozinha:</p>
+                <ul class="links-afiliados">
+                    <li>
+                        <a href="https://mercadolivre.com.br" target="_blank" rel="noopener noreferrer">
+                            <img src="https://unsplash.com" alt="Jogo Brinox" class="img-produto">
+                            <span class="txt-produto">Jogo Brinox Ceramic Life Smart Plus</span>
+                            <span class="seta">→</span>
